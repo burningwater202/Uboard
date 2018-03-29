@@ -1,13 +1,13 @@
 # Community Soundboard Project
 
 ## Project Description
-  After a quick pivot, I've decided to dive into the soundboard project idea. I felt that it was an idea complex enough that it would give me a challenge and showcase my skills, but not too complex to the point where I would stress myself out too much for the spring of my senior year. This project can currently go one of two ways, the first idea was to have a board that fits the user's screen filled with buttons in close proximity. Most of the buttons will be gray, with a few being colored (more on that later). When a user presses a gray button, they are greeted with a menu that allows them to choose a color (or jpeg image) to use as the button's background as well as a mp3 file to act as the button's noise. Once they submit their button, the selected button will update to reflect the change and the mp3 file and color or jpeg file will be stored in a database. Clicking on the same button now will depress the button and play the noise for everyone on the site to hear.
+After a quick pivot, I've decided to dive into the soundboard project idea. I felt that it was an idea complex enough that it would give me a challenge and showcase my skills, but not too complex to the point where I would stress myself out too much for the spring of my senior year. This project can currently go one of two ways, the first idea was to have a board that fits the user's screen filled with buttons in close proximity. Most of the buttons will be gray, with a few being colored (more on that later). When a user presses a gray button, they are greeted with a menu that allows them to choose a color (or jpeg image) to use as the button's background as well as a mp3 file to act as the button's noise. Once they submit their button, the selected button will update to reflect the change and the mp3 file and color or jpeg file will be stored in a database. Clicking on the same button now will depress the button and play the noise for everyone on the site to hear. In order to do this each user will have to be logged in a session, allowing for each user to be pinged with a sound when a button is pressed. 
 
 ## Project Design
 
 ### Integrated Technologies 
 
-This project will use the required Spring MVC and Maven libraries, and I am planning to use a sql server to store all of the user supplied files. Additionally, I'm going to be looking into the possibility of using an array of objects to reference the stored data from the database.  
+This project will utilize Spring MVC and Maven to run the server and connect to a relational database to store references to the files and the included information about each file. The HTML side of the equation is a re-sizeable soundboard that can have a different length and width, but will be defaulted by 27x9 to start. I will also implement a login function from one of many availible login APIs and use this to monitor user sessions. The upload/download mechanic will be using the javascript File API in order to give the users access to uploading and downloading files.
 
 ### Use Cases
 
@@ -15,16 +15,19 @@ This project will use the required Spring MVC and Maven libraries, and I am plan
 2. User presses another user's soundboard button, playing the sound
 3. User downloads sound from a button
 4. Two users simultaneously press two buttons, playing both sounds
-
-There will likely be more use cases than this, these are the ones off of the top of my head.
+5. User can login
+6. User can logout
 
 ### Necessary Design Documents
 
-None yet!
+Nothing as of 1st checkpoint
 
 ## Project Schedule
 
-For each of the major checkpoints I want to have at least one major component of my project done, these major components being uploading files to the database, playing sounds across all concurrent users' computers, letting the users download the files from the database and then using these concepts to build the actual soundboard. These achievements will be completed in the order that I mentioned them and (hopefully) finished before the project is due. 
+1. Checkpoint 1: Make HTML page and learn how to use Spring/start work on spring server
+2. Checkpoint 2: Get upload/download mechanic working, get sound playing functionality down
+3. Checkpoint 3: Implement login function with an API & create "sessions" system
+4. Final Checkpoint: Clean up code/interface, implement multithreading if possible and finalize project.
 
 ## Project Justification
 
