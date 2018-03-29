@@ -31,8 +31,11 @@ None yet!
 ## Project Schedule
 
 Checkpoint 1: Have the HTML done for the soundboard and begin building the server
+
 Checkpoint 2: Add support for adding sounds to buttons/downloading the sounds
+
 Checkpoint 3: Finalize the "sessions" system to allow multiple users to access at once
+
 Final Checkpoint: Clean up & make final adjustments
 
 ## Project Justification
