@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <style>
+    body {
+           background-color: #B7EDFF;
+        }
+    #box{
+            border-style: double;
+            width: 450px;
+            margin: 0 auto;
+        }
+    </style>
+<body>
+<div id ="box">
+<h1 align="center">Soundboard Upload Status</h1>
+
+<div th:if="${message}" align="center">
+    <h2 th:text="${message}"/>
+    <h3>Click <a href="/soundboard">Here</a> to return to the soundboard</h3>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <style>
+        .button{
+            width: 50px;
+            height: 50px;
+            border-style: double;
+            
+            background-color: #ffffff;
+        }
+        body{
+            background-color: #B7EDFF;
+        }
+        .pressable{
+            width: 50px;
+            height: 50px;
+            border-style: double;
+            border-width: 1px;
+            border-color: blue;
+        }
+    </style>
+    <head>
+        <title>Uboard Soundboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 align="center">Uboard Interactive Soundboard</h1>
+        <div id ="table" align = "center"></div>
+        <script th:inline="javascript">
+            function hasSound(id)
+            {
+                /*<![CDATA[*/
+                var idList = /*[[${numbers}]]*/ 'id list';
+                /*]]>*/
+               var length = idList.length;
+               for(var i = 0; i < length; i++)
+               {
+                   if(id === idList[i])
+                   {
+                       
+                       return true;
+                   }
+               }
+               
+               return false;
+            }
+            
+            function getListID(idList, id)
+            {
+                var length = idList.length;
+               for(var i = 0; i < length; i++)
+               {
+                   if(id === idList[i])
+                   {
+                       return i;
+                   }
+               }
+        
+               return null;
+            }
+            
+            function buildTable()
+            {
+                /*<![CDATA[*/
+                var numList = /*[[${numbers}]]*/ 'sound list';
+                var fileList = /*[[${filenames}]]*/ 'file list';
+                var colorList = /*[[${colors}]]*/ 'color list';
+                /*]]>*/
+                var li;
+                var id = 1;
+                var string = "<table>";
+                for(var i = 1; i < 11; i++)
+                {
+                    string += "<tr>";
+                    for(var j = 1; j < 11; j++)
+                    {
+                       string += "<td>";
+                       if(hasSound(id))
+                       {
+                           
+                           li = getListID(numList, id);
+                           
+                            string +="<audio id ='"+id+"' src='/sounds/"+fileList[li]+"' preload ='auto'></audio>";
+                            
+                            string +="<button class = \"pressable\" align=\"center\" style=\"background-color:"+colorList[li]+"\" id ='"+id+"' onclick=\"document.getElementById('"+id+"').play();>"+id+"</button>";
+                            
+                        }
+                       else
+                       {
+                           
+                              string += "<a href='/upload?id="+id+"'>";
+                              string += "<div class=\"button\" align=\"center\" id ='"+id+"'>"+id+"</div></a>";
+                       }
+                       string += "</td>";  
+                       id++;
+                    }
+                    string += "</tr>";
+                }
+                string += "</table>";
+                
+                return string;
+            }
+            </script>
+            <script>
+           document.getElementById("table").innerHTML = buildTable();
+        </script>
+</html>
+

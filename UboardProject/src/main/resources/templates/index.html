@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+           background-color: #B7EDFF;
+        }
+        table {
+            background-color: #ffffff;
+        }
+        #border{
+            border-style: double;
+            width: 600px;
+            margin: 0 auto;
+            
+        }
+        #createform{
+            border-style: double;
+            width: 400px;
+        }
+    </style>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>Welcome to UBoard!</title>
+    </head>
+    
+    <body>
+        <div id = "border" align="center">
+        <h1 align="center">Select your soundboard from the list below</h1>
+        <table border="1" align="center">
+            
+            <tr>
+                <td><a href ="uboard?name=Myboard&rows=100&cols=100&color=%23ff80ff">Myboard</a></td>
+            </tr>
+            <tr>
+                <td><a href ="uboard?name=Lowell&rows=30&cols=30&color=%23ffff80">Lowell</a></td>
+            </tr>
+            <tr>
+                <td><a href ="uboard?name=MemeTeam&rows=15&cols=15&color=%23ff8080">MemeTeam</a></td>
+            </tr>
+            <tr>
+                <td><a href ="soundtest.jsp">Sound Testing page</a></td>
+            </tr>
+            <tr>
+                <td><a href ="upload.jsp">upload Testing page</a></td>
+            </tr>
+            <tr>
+                <td><a href ="download.jsp">download Testing page</a></td>
+            </tr>
+            <script>
+                //Javascript Placeholder for when the list is updated out of a database
+            </script>
+        </table>
+            <br>
+            <div id="createform" align="center">
+            <h2>Or create your own</h2>
+        <form  method="GET" action="uboard" enctype="multipart/form-data">
+		Soundboard Name: <input type="text" name="name"><br /> <br /> 
+                Number of Rows: <input type="number" name="rows"><br /> <br />
+                Number of Columns: <input type="number" name="cols"><br /> <br />
+                Background Color: <input type="color" name="color" value="#ffffff"> <br /><br />
+		<input type="submit" value="Create">
+	</form>
+            <br>
+            </div>
+            <br>
+       </div>
+    </body>
+</html>
