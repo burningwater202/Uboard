@@ -11,6 +11,8 @@ After the most recent design phase I have noticed that I may not have enough tim
 
 *Update for Checkpoint 3*
 
+Several setbacks have lined up to create a worst case scenario for my project. At this point I just want to have something running, a sort of minimum-viable product to present by the end of the semester. After completely restarting and re-tooling my project I had to trim some fat off the edges of the design and bring it back down to my most basic original idea of allowing a user to upload sounds into a soundboard and then play those sounds. The soundboard is populated with a combination of both Javascript and Thymeleaf code that pulls the data from the database and populates the table with either a button that will play the sound or one that will take the user to a page where they can upload the sound and choose a color for the button to use as a backdrop. At this point, I am nearly finished with my code but I'm still having issues as far as getting Spring to allow access to my local filestructure to allow me to play sounds as well as trouble with the table going haywire on the injection of the working buttons. 
+
 ## Project Design
 
 ### Integrated Technologies 
@@ -25,10 +27,12 @@ After the most recent checkpoint, I realized there was some more information nee
 
 *Update for Checkpoint 3*
 
+The integrated technologies for this checkpoint are Spring boot, Thymeleaf, Javascript, HTML, CSS and MySql. I'm connecting to the database using Hibernate and passing the database values from Java into Thymeleaf for use in Javascript and the HTML of the code. For troubleshooting purposes, I have limited the size of my soundboard to 10 by 10 from 100 by 100. A simple SpringBoot file upload mechanic has been worked in and integrated with the database as well. 
+
 ### Use Cases
 
 1. User uploads a sound to the soundboard
-2. User presses another user's soundboard button, playing the sound
+2. User presses soundboard button, playing the sound
 ~~3. User downloads sound from a button~~
 ~~4. User creates a soundboard~~
 ~~5. User views another soundboard~~
@@ -38,10 +42,11 @@ To reflect the changes in the project specification the login/logout cases have 
 
 *Update for Checkpoint 3*
 
+The User-created soundboard use case has been removed as the scope of the project has been re-tooled in order for me to have a working product by the end of the semester. Added the ability to choose a color for a soundboard button.
 
 ### Necessary Design Documents
 
-Nothing as of 1st checkpoint
+N/A
 
 ## Project Schedule
 
@@ -65,6 +70,8 @@ After further testing and work, the novelty of the project has shifted slightly.
 
 *Update for Checkpoint 3*
 
+The novelty has, as the rest of the project, been scaled back in order to retain the possiblity of me being able to provide a working product. Users can upload their own sound clips anonymously, choose the color that the buttons become and play the sounds at their own leisure by pressing the button. 
+
 ### Complexity
 
 *original complexity statement*
@@ -76,3 +83,5 @@ This project may sound simple on the outside, but it is going to be more complex
 The complexity idea has not changed quite as significantly as the others. One of the major hurdles I had seen before in terms of giving the user the ability to create their own soundboard with varying size has been overcome with some relatively simple javascript. The database part still perplexes me and I'm interested in seeing how I'm going to implement that in checkpoint 3, because that's essentially going to be the entire backbone of this project. 
 
 *Update for Checkpoint 3*
+
+Checkpoint 3 saw a severe dropback in complexity due to the issues brought up in the previous sections. There is only a single soundboard at this point, with users having the ability to add sounds from their personal files and upload them directly to my computer, the values being stored in my MySql database. 
