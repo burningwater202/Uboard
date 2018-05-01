@@ -13,6 +13,10 @@ After the most recent design phase I have noticed that I may not have enough tim
 
 Several setbacks have lined up to create a worst case scenario for my project. At this point I just want to have something running, a sort of minimum-viable product to present by the end of the semester. After completely restarting and re-tooling my project I had to trim some fat off the edges of the design and bring it back down to my most basic original idea of allowing a user to upload sounds into a soundboard and then play those sounds. The soundboard is populated with a combination of both Javascript and Thymeleaf code that pulls the data from the database and populates the table with either a button that will play the sound or one that will take the user to a page where they can upload the sound and choose a color for the button to use as a backdrop. At this point, I am nearly finished with my code but I'm still having issues as far as getting Spring to allow access to my local filestructure to allow me to play sounds as well as trouble with the table going haywire on the injection of the working buttons. 
 
+*Final Update*
+
+After dealing with major setbacks throughout the semester I was finally able to put together a working product. The Uboard Interactive soundboard is an online soundboard that allows users to upload their own unique sounds and play them back on button press. It was originally supposed to support sessions and allow multiple users to hear the sound when one user played it. Due to time restrictions and setbacks as well as issues implementing an account system, this was de-scoped down to just the soundboard itself with file upload capabilities and the ability for a user to choose the color for their soundboard button. 
+
 ## Project Design
 
 ### Integrated Technologies 
@@ -29,6 +33,10 @@ After the most recent checkpoint, I realized there was some more information nee
 
 The integrated technologies for this checkpoint are Spring boot, Thymeleaf, Javascript, HTML, CSS and MySql. I'm connecting to the database using Hibernate and passing the database values from Java into Thymeleaf for use in Javascript and the HTML of the code. For troubleshooting purposes, I have limited the size of my soundboard to 10 by 10 from 100 by 100. A simple SpringBoot file upload mechanic has been worked in and integrated with the database as well. 
 
+*Final Update*
+
+The final exhaustive list of technologies includes HTML, CSS, Javascript, Thymeleaf, Spring MVC, Spring Boot and MySql. The HTML and CSS are self explanatory, whereas the javascript was used to generate the soundboard itself through HTML injection as well as play the sounds with the help of HTML5 audio. Thymeleaf was used as a sort of carrier to allow values to be passed from the controller to the HTML files and therefore used in the javascript code. Spring MVC and Spring Boot were used as the base of the project and the MySql database was connected on the backend using a CRUDRepository and hibernate to connect it all. 
+
 ### Use Cases
 
 1. User uploads a sound to the soundboard
@@ -44,6 +52,10 @@ To reflect the changes in the project specification the login/logout cases have 
 
 The User-created soundboard use case has been removed as the scope of the project has been re-tooled in order for me to have a working product by the end of the semester. Added the ability to choose a color for a soundboard button.
 
+*Final Update*
+
+The Use Cases did not see any significant difference between Checkpoint 3 and the Final Checkpoint. 
+
 ### Necessary Design Documents
 
 N/A
@@ -53,8 +65,11 @@ N/A
 1. Checkpoint 1: Make HTML page and learn how to use Spring/start work on spring server
 2. Checkpoint 2: Work on Upload/Download functionality ~~and sound playing.~~ Create the "soundboard maker" javascript code for  generating soundboard
 3. Checkpoint 3: Modify the upload/download functions in order to get them to fit with the soundboard. Modify the javascript behind the  generated soundboard so that it determines whether or not a particular button is pre-populated with a sound based on its unique button number. This will require full SQL integration.
-
 4. Final Checkpoint: Fix sound integration so that it works with Spring Boot. Finalize the javascript and thymeleaf behind the soundboard to allow it to pull from database and use local uploaded sounds
+
+*Final Update*
+
+Seeing as the project went through many iterations and changes over the course of the semester, the project schedule has been modified in a way that reflects the work that was done on the project for each update. 
 
 ## Project Justification
 
@@ -68,9 +83,11 @@ This project is taking a spin on the idea of the soundboard and using crowdsourc
 
 After further testing and work, the novelty of the project has shifted slightly. It still retains the "allowing users to upload their own sound clips", however playing together with others has been replaced with populating the board with other anonymous users. The anonymity adds a bit of a layer of novelty as anyone can add to any soundboard with any sound, leading to some potentially wacky combinations.
 
-*Update for Checkpoint 3*
+*Update for Checkpoint 3/final update*
 
 The novelty has, as the rest of the project, been scaled back in order to retain the possiblity of me being able to provide a working product. Users can upload their own sound clips anonymously, choose the color that the buttons become and play the sounds at their own leisure by pressing the button. 
+
+
 
 ### Complexity
 
@@ -82,6 +99,6 @@ This project may sound simple on the outside, but it is going to be more complex
 
 The complexity idea has not changed quite as significantly as the others. One of the major hurdles I had seen before in terms of giving the user the ability to create their own soundboard with varying size has been overcome with some relatively simple javascript. The database part still perplexes me and I'm interested in seeing how I'm going to implement that in checkpoint 3, because that's essentially going to be the entire backbone of this project. 
 
-*Update for Checkpoint 3*
+*Update for Checkpoint 3/final update*
 
 Checkpoint 3 saw a severe dropback in complexity due to the issues brought up in the previous sections. There is only a single soundboard at this point, with users having the ability to add sounds from their personal files and upload them directly to my computer, the values being stored in my MySql database. 
