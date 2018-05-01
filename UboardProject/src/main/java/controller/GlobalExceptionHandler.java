@@ -24,12 +24,5 @@ public class GlobalExceptionHandler {
 
     }
 
-    /* Spring < 4.3.5
-	@ExceptionHandler(MultipartException.class)
-    public String handleError2(MultipartException e) {
-
-        return "redirect:/errorPage";
-
-    }*/
 
 }

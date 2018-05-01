@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 @EnableAutoConfiguration
@@ -24,13 +25,17 @@ public class Application extends SpringBootServletInitializer{
         SpringApplication.run(Application.class, args);
     }
     
-    //@Override
+    private class AppResourceHandlers extends WebMvcConfigurerAdapter{
+      @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/sounds/**")
                 .addResourceLocations(
-                        "file:///C:\\Users\\qtown\\OneDrive\\Documents\\NetBeansProjects\\UboardProject\\src\\main\\resources\\templates\\")
+                        "file:///C:/Users/qtown/OneDrive/Documents/NetBeansProjects/UboardProject/src/main/resources/templates/sounds/")
                 .setCachePeriod(0);
 }
+    }
+    
+   
 
     
 }

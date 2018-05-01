@@ -23,38 +23,43 @@ public class Sound implements Serializable {
     
     private String color;
 
-	public Integer getButtonId() {
-		return buttonid;
-	}
+    public Integer getButtonId()
+    {
+        return buttonid;
+    }
 
-	public void setButtonId(Integer buttonid) {
-		this.buttonid = buttonid;
-	}
+    public void setButtonId(Integer buttonid) 
+    {
+        this.buttonid = buttonid;
+    }
 
-	public Integer getButtonNumber() {
-		return buttonnumber;
-	}
+    public Integer getButtonNumber() 
+    {
+        return buttonnumber;
+    }
 
-	public void setButtonNumber(Integer buttonnumber) {
-		this.buttonnumber = buttonnumber;
-	}
+    public void setButtonNumber(Integer buttonnumber)
+    {
+        this.buttonnumber = buttonnumber;
+    }
 
-	public String getFileName() {
-		return filename;
-	}
+    public String getFileName() 
+    {
+        return filename;
+    }
 
-	public void setFileName(String filename) {
-		this.filename = filename;
-	}
+    public void setFileName(String filename)
+    {
+        this.filename = filename;
+    }
 
-    public String getColor() {
+    public String getColor() 
+    {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(String color) 
+    {
         this.color = color;
     }
-        
-
-
 }

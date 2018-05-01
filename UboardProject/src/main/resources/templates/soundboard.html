@@ -86,16 +86,26 @@ and open the template in the editor.
                            
                            li = getListID(numList, id);
                            
-                            string +="<audio id ='"+id+"' src='/sounds/"+fileList[li]+"' preload ='auto'></audio>";
-                            
-                            string +="<button class = \"pressable\" align=\"center\" style=\"background-color:"+colorList[li]+"\" id ='"+id+"' onclick=\"document.getElementById('"+id+"').play();>"+id+"</button>";
+                            string += "<audio id ='sound"+id+"'";
+                            string += " src='sounds/"+fileList[li]+"'";
+                            string += " preload ='none'><source src='sounds/"+fileList[li]+"' type = 'audio/mpeg'>";
+                            string += "<source src='sounds/"+fileList[li]+"' type = 'audio/ogg'>";
+                            string += "<source src='sounds/"+fileList[li]+"' type = 'audio/wav'>this plays if it doesnt work</audio>";
+                            string += "<button class = 'pressable'";
+                            string += " align='center' ";
+                            string += "style='background-color:"+colorList[li]+"' ";
+                            string += "id ='button"+id+"' ";
+                            string += "onclick=\"playSound('sound"+id+"')\">";
+                            string += id+"</button>";
                             
                         }
                        else
                        {
-                           
-                              string += "<a href='/upload?id="+id+"'>";
-                              string += "<div class=\"button\" align=\"center\" id ='"+id+"'>"+id+"</div></a>";
+                            string += "<a href='/upload?id="+id+"'>";
+                            string += "<div class='button'";
+                            string += " align='center'";
+                            string += " id ='"+id+"'>";
+                            string +=  id+"</div></a>";
                        }
                        string += "</td>";  
                        id++;
@@ -105,6 +115,14 @@ and open the template in the editor.
                 string += "</table>";
                 
                 return string;
+            }
+            
+            function playSound(id)
+            {
+                var sound = document.getElementById(id);
+                console.log(sound);
+                sound.load();
+                sound.play();
             }
             </script>
             <script>

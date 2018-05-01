@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.File;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,20 +13,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
-import static java.nio.file.Files.list;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import static java.rmi.Naming.list;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,7 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FileUploadController {
 
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = "C:\\Users\\qtown\\OneDrive\\Documents\\NetBeansProjects\\UboardProject\\src\\main\\resources\\templates\\sounds\\";
+    private static final String UPLOADED_FOLDER = "C:\\Users\\qtown\\OneDrive\\Documents\\NetBeansProjects\\UboardProject\\src\\main\\webapp\\resources\\sounds\\";
 
     @GetMapping("/upload")
     public String index(@RequestParam(value="id") String id, Model m) {
@@ -49,9 +45,6 @@ public class FileUploadController {
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes, @RequestParam Integer buttonNumber
 			, @RequestParam String color) {
-        
-                
-        
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
             return "redirect:uploadStatus";
@@ -77,29 +70,7 @@ public class FileUploadController {
 
         return "redirect:/uploadStatus";
     }
-
-       /* public String getFileNameByNumber(Integer number)
-        {
-            return soundRepository.findByNumber(number).getFileName();
-        }*/
-   // @GetMapping(path="/all")
-	public void getSoundFile(Integer number) {
-		
-                System.out.println(soundRepository.findAll());
-           /* String fileName = getFileNameByNumber(number);
-            try {
-                    File file = new ClassPathResource(fileName).getFile();
-                    return file;
-                } 
-            catch (IOException ex) 
-            {
-                Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
-                return null;
-            }*/
-              
-	}
-        
-        
+    
         public ArrayList<Sound> TraverseSounds()
         {
             Sound mySound = new Sound();
@@ -109,34 +80,57 @@ public class FileUploadController {
             
         }
         
-        
-        
-        @GetMapping(path="/all")
-        public @ResponseBody Iterable<Sound> getAll()
+        @RequestMapping("/sounds/{fileName}")
+    public void downloadPDFResource( HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     @PathVariable("fileName") String fileName)
+    {
+        String dataDirectory = request.getServletContext().getRealPath("/resources/sounds/");
+        System.out.println(dataDirectory);
+        Path file = Paths.get(dataDirectory, fileName);
+        if (Files.exists(file))
         {
-            return soundRepository.findAll();
-        }
-    @GetMapping(path="/soundboard")
-        public String soundBoard(Model model)
-        {
-            List<Integer> numberlist = new ArrayList();
-            List<String> fileList = new ArrayList();
-            List<String> colorList = new ArrayList();
-            ArrayList<Sound> mySounds = TraverseSounds();
-            for(int i = 0; i < mySounds.size(); i++)
-            {
-                numberlist.add(mySounds.get(i).getButtonNumber());
-                fileList.add(mySounds.get(i).getFileName());
-                colorList.add(mySounds.get(i).getColor());
-                
-            }
-            model.addAttribute("soundlist", mySounds);
-            model.addAttribute("numbers", numberlist);
-            model.addAttribute("filenames", fileList);
-            model.addAttribute("colors", colorList);
+            InputStream in = getClass().getResourceAsStream(file.toString());
             
-            return "soundboard";
+            response.setContentType("audio/mpeg");
+            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+            try
+            {
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
+    }
+
+       
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Sound> getAll()
+    {
+        return soundRepository.findAll();
+    }
+    @GetMapping(path="/soundboard")
+    public String soundBoard(Model model)
+    {
+        List<Integer> numberlist = new ArrayList();
+        List<String> fileList = new ArrayList();
+        List<String> colorList = new ArrayList();
+        ArrayList<Sound> mySounds = TraverseSounds();
+        for(int i = 0; i < mySounds.size(); i++)
+        {
+            numberlist.add(mySounds.get(i).getButtonNumber());
+            fileList.add(mySounds.get(i).getFileName());
+            colorList.add(mySounds.get(i).getColor());
+        }
+        model.addAttribute("soundlist", mySounds);
+        model.addAttribute("numbers", numberlist);
+        model.addAttribute("filenames", fileList);
+        model.addAttribute("colors", colorList);
+
+        return "soundboard";
+    }
         
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
